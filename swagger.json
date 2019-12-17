@@ -1,0 +1,183 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Testing",
+		"description": "A simple API to understand the Swagger"
+	},
+	"schemes": [
+		"http",
+		"https"
+	],
+	
+	
+	"securityDefinitions": {
+		"UserSecurity": {
+			"type": "basic"
+		}
+	},
+	"security": [
+		{
+			"UserSecurity": []
+		}
+	],
+	
+	"paths": {
+		"/test": {
+			"get": {
+				"description": "Printing the data from database",
+				"responses": {
+					"200": {
+						"description": "Successfully printed",
+						"schema": {
+							"type":"object",
+							"required":["username","password"],
+							"properties":{
+                                "username":{"type":"string"},
+                                "password":{"type": "string"} 
+							}
+						}
+					},
+					"404": {
+						"description": "Invalid request",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"username":{"type": "string"},
+                                "password":{"type":"string"}
+							}
+						}
+					}
+				}
+			}
+		},
+        "/testpost":{
+            "post": {
+				"description": "Add user to database",
+				"parameters": [
+					{
+						"name": "User Data",
+						"in": "body",
+						"description": "creates a new user in our database",
+						"schema": {
+							"type": "object",
+							"required": [
+                                "username",
+                                "password"
+							],
+							"properties": {
+								"username": {
+									"type": "string"
+								},
+								"password": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+                        "description": "Successfully created a new user",
+                        "schema":{
+                            "type": "object",
+                            "properties":{
+                                "username":{
+                                    "type":"string"
+                                },
+                                "password":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+					},
+					"400": {
+						"description": "Invalid request",
+						"schema": {
+							"type": "object",
+							"properties":{
+                                "Error":{
+                                    "type":"string"
+                                }
+                            }
+						}
+					}
+				}
+			}
+        },
+        "/testing":{
+            "post": {
+                "description": "Lets a user post a new artist",
+                "parameters": [
+                    {
+                        "name": "artist",
+                        "in": "body",
+                        "description": "creates a new artist in our database",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "username"
+                            ],
+                            "properties": {
+                                "artist_name": {
+                                    "type": "string"
+                                },
+                                "artist_genre": {
+                                    "type": "string"
+                                },
+                                "albums_recorded": {
+                                    "type": "integer"
+                                },
+                                "username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully created a new artist"
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+		},
+		"/getobject": {
+			"get": {
+					"description": "Get Obj",
+					
+					"responses": {
+						"200": {
+							"description": "Successfully created a new artist"
+						},
+						"400": {
+							"description": "Invalid request",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"message": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+		}
+       
+    }
+        
+    }
+
