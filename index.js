@@ -40,6 +40,9 @@ app.post("/testpost", async(req, res) =>{
     res.send(user)
     }
     catch(ex){
+        res.status(400).json({
+            message: "please enter your username or password"
+        })
         console.log(ex)
     }
     

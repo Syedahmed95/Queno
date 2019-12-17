@@ -81,6 +81,7 @@
                         "description": "Successfully created a new user",
                         "schema":{
                             "type": "object",
+                            "required":["username","password"],
                             "properties":{
                                 "username":{
                                     "type":"string"
@@ -94,7 +95,8 @@
 					"400": {
 						"description": "Invalid request",
 						"schema": {
-							"type": "object",
+                            "type": "object",
+                            "required":["username","password"],
 							"properties":{
                                 "Error":{
                                     "type":"string"
